@@ -1,9 +1,12 @@
-export enum Type {
-  file = 'FILE',
-  folder = 'FOLDER'
+export enum ColumnIndex {
+  FirstColumn = 'firstColumn',
+  SecondColumn = 'secondColumn',
+  ThirdColumn = 'thirdColumn',
+  FourthColumn = 'fourthColumn',
 }
-export interface ColumnType {
-  type: Type,
-  isChecked: Boolean,
-  children: ColumnType[],
-}
+export const ColumnIndexList:ColumnIndex[] = [
+  ColumnIndex.FirstColumn,
+  ColumnIndex.SecondColumn,
+  ColumnIndex.ThirdColumn,
+  ColumnIndex.FourthColumn,
+];

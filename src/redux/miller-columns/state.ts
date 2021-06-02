@@ -2,61 +2,72 @@ import { MCState, ColumnsType, ItemType, SelectStatus } from './type';
 import { uid } from 'uid';
 import faker from 'faker';
 
+/**
+ * Data Mock
+*/
+
+const filesList = [
+  {
+    type: ItemType.File,
+    id: uid(),
+    name: faker.system.commonFileName(),
+    isChecked: false,
+  },
+  {
+    type: ItemType.File,
+    id: uid(),
+    name: faker.system.commonFileName(),
+    isChecked: false,
+  },
+];
+
+const folderList1 = [
+  {
+    type: ItemType.File,
+    id: uid(),
+    name: faker.system.commonFileName(),
+    isChecked: false,
+  },
+  {
+    type:ItemType.Folder,
+    id: uid(),
+    name: faker.lorem.word(),
+    isUnfolded: false,
+    selectStatus: SelectStatus.None,
+    children: filesList,
+  }
+];
+
+const folderList = [
+  {
+    type: ItemType.File,
+    id: uid(),
+    name: faker.system.commonFileName(),
+    isChecked: false,
+  },
+  {
+    type:ItemType.Folder,
+    id: uid(),
+    name: faker.lorem.word(),
+    isUnfolded: false,
+    selectStatus: SelectStatus.None,
+    children: folderList1,
+  }
+];
+
+// ***
+
 const initialFourthColumn:ColumnsType = {
   folderId: '',
-  list: [
-    {
-      type: ItemType.File,
-      id: uid(),
-      name: faker.system.commonFileName(),
-      isChecked: false,
-    },
-    {
-      type:ItemType.Folder,
-      id: uid(),
-      name: faker.lorem.word(),
-      isUnfold: false,
-      selectStatus: SelectStatus.None,
-    }
-  ],
+  list: [],
 };
 const initialThirdColumn:ColumnsType = {
   folderId: '',
-  list: [
-    {
-      type: ItemType.File,
-      id: uid(),
-      name: faker.system.commonFileName(),
-      isChecked: false,
-    },
-    {
-      type:ItemType.Folder,
-      id: uid(),
-      name: faker.lorem.word(),
-      isUnfold: false,
-      selectStatus: SelectStatus.None,
-      children: initialFourthColumn.list,
-    }
-  ],
+  list: [],
 };
 const initialSecondColumn:ColumnsType = {
   folderId: '',
-  list: [
-    {
-      type: ItemType.File,
-      id: uid(),
-      name: faker.system.commonFileName(),
-      isChecked: false,
-    },
-    {
-      type:ItemType.Folder,
-      id: uid(),
-      name: faker.lorem.word(),
-      isUnfold: false,
-      selectStatus: SelectStatus.None,
-      children: initialThirdColumn.list,
-    }
-  ],
+  list: [],
 };
 const initialFirstColumn:ColumnsType = {
   folderId: '',
@@ -68,19 +79,103 @@ const initialFirstColumn:ColumnsType = {
       isChecked: false,
     },
     {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+    {
       type:ItemType.Folder,
       id: uid(),
       name: faker.lorem.word(),
-      isUnfold: false,
+      isUnfolded: false,
       selectStatus: SelectStatus.None,
-      children: initialSecondColumn.list,
-    }
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+    {
+      type:ItemType.Folder,
+      id: uid(),
+      name: faker.lorem.word(),
+      isUnfolded: false,
+      selectStatus: SelectStatus.None,
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+    {
+      type:ItemType.Folder,
+      id: uid(),
+      name: faker.lorem.word(),
+      isUnfolded: false,
+      selectStatus: SelectStatus.None,
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+    {
+      type:ItemType.Folder,
+      id: uid(),
+      name: faker.lorem.word(),
+      isUnfolded: false,
+      selectStatus: SelectStatus.None,
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+    {
+      type:ItemType.Folder,
+      id: uid(),
+      name: faker.lorem.word(),
+      isUnfolded: false,
+      selectStatus: SelectStatus.None,
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
+
+    {
+      type:ItemType.Folder,
+      id: uid(),
+      name: faker.lorem.word(),
+      isUnfolded: false,
+      selectStatus: SelectStatus.None,
+      children: folderList,
+    },
+    {
+      type: ItemType.File,
+      id: uid(),
+      name: faker.system.commonFileName(),
+      isChecked: false,
+    },
   ],
 };
 export const initialState:MCState = {
-  first: initialFirstColumn,
-  second: initialSecondColumn,
-  third: initialThirdColumn,
-  fourth: initialFourthColumn,
+  isExpanded: false,
+  firstColumn: initialFirstColumn,
+  secondColumn: initialSecondColumn,
+  thirdColumn: initialThirdColumn,
+  fourthColumn: initialFourthColumn,
 };
 

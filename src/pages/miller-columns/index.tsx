@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Column } from './components/column';
+import { ColumnIndex } from './type';
 import './index.scss';
 
  const MillerColumnsApp:React.FC = () => {
-  useEffect(() => {
-
-  }, []);
-
   return (
     <div className="miller-columns">
-      {/* <Column items={}/> */}
+      <div className="content">
+        <Column columnIndex={ColumnIndex.FirstColumn} />
+        <Column columnIndex={ColumnIndex.SecondColumn} />
+        <Column columnIndex={ColumnIndex.ThirdColumn} />
+        <Column columnIndex={ColumnIndex.FourthColumn} />
+      </div>
     </div>
   );
 };

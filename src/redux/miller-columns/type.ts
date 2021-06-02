@@ -1,8 +1,9 @@
 export interface MCState {
-  first:ColumnsType,
-  second:ColumnsType,
-  third:ColumnsType,
-  fourth:ColumnsType,
+  isExpanded:Boolean,
+  firstColumn:ColumnsType,
+  secondColumn:ColumnsType,
+  thirdColumn:ColumnsType,
+  fourthColumn:ColumnsType,
 }
 export interface ColumnsType {
   folderId:String,
@@ -17,18 +18,12 @@ export enum SelectStatus {
   Pending = 'PENDING',
   Selected = 'SELECTED',
 }
-export interface FileType {
-  type:ItemType.File,
-  id:String,
-  name:String,
-  isChecked:Boolean,
-}
-export interface FolderType {
-  type:ItemType.Folder,
-  id:String,
-  name:String,
-  isUnfold:Boolean,
-  selectStatus:SelectStatus,
-  children?:ColumnType[],
-}
-export type ColumnType = FileType|FolderType;
+export interface ColumnType {
+  type:ItemType,
+  id:string,
+  name:string,
+  isChecked?:Boolean, // file only
+  isUnfolded?:Boolean, // folder only
+  selectStatus?:SelectStatus, // folder only
+  children?:ColumnType[],  // folder only
+};
